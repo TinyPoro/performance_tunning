@@ -13,7 +13,7 @@ Tin tốt là MySQL đã có những giá trị mặc định tốt hơn đáng 
 - query_cache_type = 0; query_cache_size = 0; (vô hiệu hóa mutex)
 
 
-Trong MySQL 5.7. chỉ có duy nhất 4 biến quan trong cần thay đổi. Tuy nhiên, có các biến InnoDB và MySQL toàn cục khác có thể cần điều chỉn cho các khối lượng công việc và phần cứng cụ thể.
+Trong MySQL 5.7. chỉ có duy nhất 4 biến quan trong cần thay đổi. Tuy nhiên, có các biến InnoDB và MySQL toàn cục khác có thể cần điều chỉnh cho các khối lượng công việc và phần cứng cụ thể.
 
 Để bắt đầu, thêm các cài đặt sau vào my.cnf dưới phần [mysqld]. Bạn sẽ cần khởi động lại MySQL:
 [mysqld] 
@@ -35,7 +35,7 @@ Mô tả:
 
 Tiếp theo là gì?
 
-Đây là những xuất phát điểm tốt cho bất kỳ cài đặ mới nào. 1 số các biến khác có thể cải thiện hiệu năng của MySQL cho 1 vài khối lượng công việc. Thông thường, tôi sẽ thiết lập  công cụ giám sát/đồ thị hóa MySQL (ví dụ, [nền tảng giảm sát và quản lý Percona][3]) và sau đó kiểm tra bảng điều khiển MySQL để điều chỉnh hiệu năng sau này.
+Đây là những xuất phát điểm tốt cho bất kỳ cài đặt mới nào. 1 số các biến khác có thể cải thiện hiệu năng của MySQL cho 1 vài khối lượng công việc. Thông thường, tôi sẽ thiết lập  công cụ giám sát/đồ thị hóa MySQL (ví dụ, [nền tảng giảm sát và quản lý Percona][3]) và sau đó kiểm tra bảng điều khiển MySQL để điều chỉnh hiệu năng sau này.
 
 Liệu chúng ta có thể điều chỉnh thêm gì nữa dựa trên các đồ thị không?
 
