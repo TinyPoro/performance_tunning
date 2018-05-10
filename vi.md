@@ -3,7 +3,7 @@
 # MySQL 5.7 Điều chỉnh hiệu suất ngay sau khi cài đặt
 Blog này cập nhật [blog của Stephane Combaudon về điều chỉnh hiệu suất MySQL][1], và bao gồm cả điều chỉnh hiệu suất ngay sau khi cài đặt của MySQL 5.7.
 
-Vài nằm trước đây, Stephane Combaudon đã viết 1 blog trên [10 cài đặt tùy chỉnh hiệu suất MySQL sau khi cài đặt ][1] bao gồm (cả hiện tại) các bản cũ hơn của MySQL: 5.1, 5.5 và 5.6. Trong bài đăng này, tôi sẽ xem xét các điều chỉnh trong MYSQL 5.7 ( với trọng tâm vào InnoDB).
+Vài nằm trước đây, Stephane Combaudon đã viết 1 blog trên [10 cài đặt tùy chỉnh hiệu suất MySQL sau khi cài đặt ][1] bao gồm các phiên bản (so với bây giờ) đã l MySQL: 5.1, 5.5 và 5.6. Trong bài đăng này, tôi sẽ xem xét các điều chỉnh trong MYSQL 5.7 ( với trọng tâm vào InnoDB).
 
 Tin tốt là MySQL đã có những giá trị mặc định tốt hơn đáng kể. Morgan Tocker đã tạo 1 [trang với 1 danh sách hoàn thiện các tính nằng trong MySQL  5.7][2], và sẽ là 1 nơi tham khảo rất tốt. Ví dụ, các biến sau đây sẽ được đặt mặc định:
 
@@ -35,7 +35,7 @@ Mô tả:
 
 Tiếp theo là gì?
 
-Đây là những xuất phát điểm tốt cho bất kỳ cài đặ mới nào. 1 số các biến khác có thể cải thiện hiệu năng của MySQL cho 1 vài khối lượng công việc. Thông thường, tôi sẽ thiết lập  công cụ giám sát/đồ thị hóa MySQL (ví dụ, [nền tảng giảm sát và quản lý Percona][3]) và sau đó kiểm tra bảng điều khiển MySQL để điều chỉnh hiệu năng sau này.
+Đây là những xuất phát điểm tốt cho bất kỳ cài đặt mới nào. 1 số các biến khác có thể cải thiện hiệu năng của MySQL cho 1 vài khối lượng công việc. Thông thường, tôi sẽ thiết lập  công cụ giám sát/đồ thị hóa MySQL (ví dụ, [nền tảng giảm sát và quản lý Percona][3]) và sau đó kiểm tra bảng điều khiển MySQL để điều chỉnh hiệu năng sau này.
 
 Liệu chúng ta có thể điều chỉnh thêm gì nữa dựa trên các đồ thị không?
 
@@ -45,7 +45,7 @@ Kích thước vùng đệm InnoDB. Hãy xem những đồ thị sau:
 
 ![MySQL 5.7 Performance Tuning][5]
 
-Như chúng ta có thể thấy, chúng ta có thể hưởng lợi từ việc tăng kích thước vùng đệm InnoDB 1 chút lên lên ~10G, vì chúng ta có RAM khả dụng và số lượng các trang rỗi là nhỏ so với tổng vùng đệm.
+Như chúng ta có thể thấy, chúng ta có thể hưởng lợi từ việc tăng kích thước vùng đệm InnoDB 1 chút lên ~10G, vì chúng ta có RAM khả dụng và số lượng các trang rỗi là nhỏ so với tổng vùng đệm.
 
 Kích thước file log InnoDB. Xem đồ thị sau:
 
@@ -65,9 +65,9 @@ Cài đặt [innodb_autoinc_lock_mode][8] =2 (chế độ interleaved) có thể
 
 innodb_io_capacity và innodb_io_capacity_max
 
-Đây là cách điều chỉnh xịn hơn, và nó chỉ có ý nghĩa khi bạn luôn luôn thực hiện việc viết quá nhiều ( nó không áp dụng cho việc đọc, ví dụ các lệnh SELECT). Nếu bạn thực sự cần điều chỉnh nó, cách tốt nhất là bạn phải biết có bao nhiêu IOPS mà hệ thống có thể thực hiện. Ví dụ, nếu server có 1 drive SSD, chúng ta có thể đặt innodb_io_capacity_max=6000 và innodb_io_capacity=3000 (50% của tối đa) . Đây là 1 ý tưởng tốt để chạy sysbench hay bất cứ công cụ benchmark nào để đánh giá thông lượng đĩa.
+Đây là cách điều chỉnh ưu việt hơn, và nó chỉ có ý nghĩa khi bạn luôn luôn thực hiện việc viết quá nhiều ( nó không áp dụng cho việc đọc, ví dụ các lệnh SELECT). Nếu bạn thực sự cần điều chỉnh nó, cách tốt nhất là bạn phải biết có bao nhiêu IOPS mà hệ thống có thể thực hiện. Ví dụ, nếu server có 1 drive SSD, chúng ta có thể đặt innodb_io_capacity_max=6000 và innodb_io_capacity=3000 (50% của tối đa) . Đây là 1 ý tưởng tốt để chạy sysbench hay bất cứ công cụ benchmark nào để đánh giá thông lượng đĩa.
 
-Nhưng liệu chúng ta có cần phải lo lắng về cài đặt này?Xem biểu đồ về [những trang bẩn][9] của vùng đệm":
+Nhưng liệu chúng ta có cần phải lo lắng về cài đặt này? Xem biểu đồ về [những trang bẩn][9] của vùng đệm":
 
 ![screen-shot-2016-10-03-at-7-19-47-pm][10]
 
