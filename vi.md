@@ -3,7 +3,7 @@
 # MySQL 5.7 Điều chỉnh hiệu suất ngay sau khi cài đặt
 Blog này cập nhật [blog của Stephane Combaudon về điều chỉnh hiệu suất MySQL][1], và bao gồm cả điều chỉnh hiệu suất ngay sau khi cài đặt của MySQL 5.7.
 
-Vài nằm trước đây, Stephane Combaudon đã viết 1 blog trên [10 cài đặt tùy chỉnh hiệu suất MySQL sau khi cài đặt ][1] bao gồm các phiên bản (so với bây giờ) đã l MySQL: 5.1, 5.5 và 5.6. Trong bài đăng này, tôi sẽ xem xét các điều chỉnh trong MYSQL 5.7 ( với trọng tâm vào InnoDB).
+Vài nằm trước đây, Stephane Combaudon đã viết 1 blog trên [10 cài đặt tùy chỉnh hiệu suất MySQL sau khi cài đặt ][1] bao gồm các phiên bản (so với bây giờ) đã là cũ của MySQL nh: 5.1, 5.5 và 5.6. Trong bài đăng này, tôi sẽ xem xét các điều chỉnh trong MYSQL 5.7 ( với trọng tâm vào InnoDB).
 
 Tin tốt là MySQL đã có những giá trị mặc định tốt hơn đáng kể. Morgan Tocker đã tạo 1 [trang với 1 danh sách hoàn thiện các tính nằng trong MySQL  5.7][2], và sẽ là 1 nơi tham khảo rất tốt. Ví dụ, các biến sau đây sẽ được đặt mặc định:
 
